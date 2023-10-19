@@ -17,6 +17,7 @@ def news_details(request, id):
     context = {"new": new, "categories": new.categories.all()}
     return render(request, "news_details.html", context)
 
+
 def create_category(request):
     form = CreateCategoryModelForm()
 
@@ -31,6 +32,7 @@ def create_category(request):
 
     return render(request, "categories_form.html", context)
 
+
 def create_new(request):
     form = CreateNewModelForm()
 
@@ -38,14 +40,12 @@ def create_new(request):
         form = CreateNewModelForm(request.POST, request.FILES)
 
         if form.is_valid():
- 
-            categories = form.cleaned_data.pop('categories')
+            categories = form.cleaned_data.pop("categories")
             new = News.objects.create(**form.cleaned_data)
-            
+
             for category in categories:
                 new.categories.add(category)
                 new.save()
-
 
             return redirect("home-page")
 
