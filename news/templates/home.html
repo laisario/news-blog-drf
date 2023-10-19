@@ -14,10 +14,10 @@ Página Inicial
 
 {% block content %}
 {% for new in news %}
-  <div>
+  <a href="{% url 'news-details-page' new.id %}">
     <img src="{% static new.image.url %}" height="50" alt="{{ new.title }}"  />
     <h2 class="news-title">{{ new.title }}</h2>
     <span class="news-date">{{ new.created_at|date:"d/m/Y" }}</span>
-  </div>
+  </a>
 {% endfor %}
 {% endblock %}

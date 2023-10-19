@@ -18,11 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from news.views import index
+from news.views import index, news_details, create_category, create_new
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="home-page"),
+    path("news/<int:id>", news_details, name="news-details-page"),
+    path("categories/", create_category, name="categories-form"),
+    path("news/", create_new, name="news-form"),
 ]
 
 if settings.DEBUG:
