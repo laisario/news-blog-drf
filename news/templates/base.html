@@ -1,0 +1,13 @@
+<!-- {% load static %} -->
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen" />
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <header class="header">{% block header %} {% endblock %}</header>
+    {% block content %} {% endblock %}
+</body>
+</html>
